@@ -1,0 +1,207 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* nav styles */
+nav {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.links_and_logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0px;
+}
+.links_and_logo ul {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+.links_and_logo ul li {
+  list-style: none;
+  padding: 10px;
+}
+.links_and_logo ul a {
+  text-decoration: none;
+  color: black;
+}
+.transparent_button {
+  font-family: "Poppins", sans-serif;
+  color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.blue_buttom {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0074d9;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+/* header styles */
+.header {
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f6fb;
+  /* height: 50vh; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-left: 50px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+.header_text h1 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.header_text p {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+.car_image {
+  position: absolute;
+  top: 50px;
+  right: -200px;
+}
+.header_button {
+  width: 25 0px;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0074d9;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+/* main_page */
+.main_page {
+  margin-top: 30px;
+  padding-left: 50px;
+}
+.main_page .first_section h1 {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+.main_page .first_section ul li {
+  list-style: none;
+  margin-bottom: 30px;
+  font-size: 19px;
+}
+
+.main_page {
+  margin-top: 30px;
+  padding-left: 50px;
+}
+.main_page .second_section h1 {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+/* .main_page .second_section ul li::marker {
+  list-style: none;
+  margin-bottom: 30px;
+  font-size: 19px;
+} */
+.main_page .second_section ul li {
+  list-style: none;
+  margin-bottom: 30px;
+  font-size: 19px;
+}
+.main_page .second_section ul li::before {
+  content: "•"; /* Unicode for bullet character */
+  color: #0074d9;
+  font-size: 2em; /* Change the size of the bullet */
+  display: inline-block;
+  width: 1em; /* Optional: adjust the width to align text */
+  margin-left: -1em; /* Position the bullet correctly */
+}
+
+.main_page {
+  margin-top: 30px;
+  padding-left: 50px;
+}
+.main_page .third_section h1 {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+.main_page .third_section h2 {
+  margin-top: 30px;
+}
+/* .main_page .third_section ul li::marker {
+    list-style: none;
+    margin-bottom: 30px;
+    font-size: 19px;
+  } */
+.main_page .third_section ul li {
+  list-style: none;
+  margin-bottom: 5px;
+  font-size: 19px;
+}
+.main_page .third_section ul li::before {
+  content: "•"; /* Unicode for bullet character */
+  color: #0074d9;
+  font-size: 2em; /* Change the size of the bullet */
+  display: inline-block;
+  width: 1em; /* Optional: adjust the width to align text */
+  margin-left: -1em; /* Position the bullet correctly */
+}
+
+.button_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 150px;
+}
+.button_section button {
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 150px;
+  background-color: #00172b;
+  width: "100%";
+  display: flex;
+  flex-direction: row;
+  padding: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+footer .terms {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 32%;
+}
+footer .terms p {
+  font-size: 11px;
+}
+footer .logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 7%;
+}
