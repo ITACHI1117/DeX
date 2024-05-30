@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DeX</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cras_grid.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,7 +23,7 @@
           <ul class="links">
             <a href=""><li>Home</li></a>
             <a href=""><li>Vehicles</li></a>
-            <a href=""><li>How t Works</li></a>
+            <a href=""><li>How it Works</li></a>
             <a href=""><li>About</li></a>
             <a href=""><li>Contact</li></a>
           </ul>
@@ -35,101 +36,51 @@
         <a href=""><button class="blue_buttom">Sign up</button></a>
       </div>
     </nav>
+    <section>
+      <div class="cars">
+      <div class="cars_grid">
+      <?php
+            // Database connection details
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "dex_hire_purchase";
 
-    <section class="header">
-      <div class="header_text">
-        <h1>
-          Own a car today <br />
-          through hire purchase
-        </h1>
-        <p>
-          DeX provides an easy way to spread the cost of your car across <br />
-          monthly payments.
-        </p>
-        <a href=""
-          ><button class="header_button">Browse all 5000+ cars</button></a
-        >
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // SQL query to fetch user information
+            $sql = "SELECT *  FROM vehicles";
+            $result = $conn->query($sql);
+
+            while($row = $result->fetch_assoc()) {
+                
+                echo " <div class='cars_container'>
+            <img src=".$row['img']." alt='' />
+            <h2>".$row['name']." </h2>
+            <h3>Full-Size Luxury</h3>
+            <div class='des_row'>
+              <span class='des_1'><p>".$row['year']." </p></span>
+              <span class='des_2'><p>".$row['power']." </p></span>
+              <span class='des_2'><p>".$row['transmission']." </p></span>
+            </div>
+            <div class='price_buy'>
+              <p>₦".$row['price']." </p>
+              <button>Buy now</button>
+            </div>
+          </div>
+              ";
+            }
+           
+      
+      ?>
+        </div>
       </div>
-      <div class="car_image">
-        <img src="./assets/car.png" alt="" />
-      </div>
-    </section>
-    <section class="main_page">
-      <div class="first_section">
-        <h1>What is hire purchase?</h1>
-        <ul>
-          <li>
-            Hire Purchase (HP) is a type of car finance that allows you to
-            spread the cost of purchasing a vehicle across a <br />
-            contracted period.
-          </li>
-          <li>
-            You’ll pay a deposit, and then cover the remaining cost of the car
-            with your fixed monthly repayments until your car <br />
-            finance contract comes to an end.
-          </li>
-          <li>
-            You might choose hire purchase if you don’t want to pay the upfront
-            cash price and spreading the cost seems a better <br />
-            alternative.
-          </li>
-        </ul>
-      </div>
-      <div class="second_section">
-        <h1>How does DeX hire purchase work?</h1>
-        <ul>
-          <li>
-            <span>Find your perfect HP used car –</span> we offer HP car finance
-            on all cars available on our site, so you can browse <br />
-            our range to find the model that suits your needs.
-          </li>
-          <li>
-            <span>Pay a deposit –</span> you’ll need to pay an initial deposit
-            before beginning your monthly repayments, with a higher deposit
-            <br />
-            meaning these monthly payments will be lower.
-          </li>
-          <li>
-            <span>Apply for HP car finance –</span> once you’ve put down a
-            deposit, you’ll need to apply for HP finance by providing some
-            <br />
-            personal details to see if you’re a good fit.
-          </li>
-          <li>
-            <span>Start your repayments –</span>if you get accepted for an HP
-            finance agreement, you’ll begin making your fixed monthly <br />
-            repayments until the end of your contract.
-          </li>
-        </ul>
-      </div>
-      <div class="third_section">
-        <h1>Is DeX Hire Purchase right for me?</h1>
-        <h2>Benefits</h2>
-        <ul>
-          <li>Fixed monthly payments</li>
-          <li>
-            There’s usually no mileage restriction, so no excess mileage charges
-          </li>
-          <li>
-            You may get the option for relatively low deposit, depending on the
-            car.
-          </li>
-        </ul>
-        <h2>Things to consider</h2>
-        <ul>
-          <li>You’ll need to pay an initial deposit</li>
-          <li>You don’t own the car until your final payment</li>
-          <li>
-            You’re not able to sell or modify the car until you officially own
-            it
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="button_section">
-      <a href=""
-        ><button class="header_button">Browse all 5000+ cars</button></a
-      >
     </section>
     <footer>
       <div class="terms">

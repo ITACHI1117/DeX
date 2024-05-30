@@ -26,15 +26,20 @@ nav {
 .links_and_logo ul {
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .links_and_logo ul li {
   list-style: none;
   padding: 10px;
+  padding-left: 20px;
 }
 .links_and_logo ul a {
   text-decoration: none;
   color: black;
+}
+.links_and_logo ul a:hover {
+  text-decoration: none;
+  color: #0074d9;
 }
 .transparent_button {
   font-family: "Poppins", sans-serif;
@@ -49,7 +54,7 @@ nav {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #0074d9;
+  background-color: black;
   color: white;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
@@ -204,4 +209,77 @@ footer .logos {
   flex-direction: row;
   justify-content: space-between;
   width: 7%;
+}
+
+.cars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(231, 231, 231);
+}
+.cars_container {
+  background-color: white;
+  padding: 20px;
+}
+.cars_container h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.cars_container h3 {
+  font-weight: 300;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.cars_grid {
+  display: grid;
+  width: 100%;
+  padding: 50px;
+  grid-template-columns: auto auto auto;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+.des_row {
+  display: flex;
+  align-items: end;
+
+  width: 250px;
+}
+.des_1 {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #ecf5fe;
+  color: #0074d9;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.des_2 {
+  margin-left: 10px;
+  padding: 5px;
+  background-color: #ecf5fe;
+  color: #0074d9;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.price_buy {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.price_buy {
+  font-size: 18px;
+}
+.price_buy button {
+  color: white;
+  background-color: #0074d9;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
 }
