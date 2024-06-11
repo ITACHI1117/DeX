@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+nav {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000c16;
+  color: white;
+}
+nav .payment_option_button {
+  text-decoration: none;
+  padding: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+}
+section {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+.photo-grid {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  overflow: hidden;
+}
+.first-box {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.first-box .item1 {
+  width: 50%;
+}
+.first-box .item1 img {
+  width: 95%;
+  object-fit: cover;
+  height: 410px;
+}
+.first-box-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.first-box .first-box-column .item2 img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+.first-box .first-box-column .item3 img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.second-box .item4 img {
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+}
+
+.third-box {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.third-box .item1 {
+  width: 50%;
+}
+.third-box .item1 img {
+  width: 95%;
+  object-fit: cover;
+  height: 100%;
+}
+.third-box-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.third-box .third-box-column .item2 img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.pay {
+  margin-top: 50px;
+}
+.pay button {
+  padding: 15px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #000c16;
+  color: white;
+  font-family: "Poppins", "sans serif";
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Modal {
+  width: 880px;
+  height: 400px;
+  background-color: white;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+
+  /* right: 30px; */
+}
+.Modal .nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.Modal .cancel_button {
+  cursor: pointer;
+}
+.Modal hr {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.first_section {
+  width: 50%;
+}
+
+.divider {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#pay_monthly {
+  cursor: pointer;
+}
+#pay_full {
+  cursor: pointer;
+  color: #0074d9;
+}
+.price_range_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 20px;
+  width: 250px;
+}
+
+.back_gray {
+  position: relative;
+  background-color: #f7f7f7;
+  margin-top: 10px;
+  padding: 10px;
+  width: 90%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+.back_gray p {
+  font-size: 14px;
+}
+.back_gray .bold_bottom {
+  font-size: 14px;
+  position: absolute;
+  bottom: 25px;
+}
+
+.back_gray2 {
+  position: relative;
+  background-color: #f7f7f7;
+  margin-top: 10px;
+  padding: 10px;
+  width: 90%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.back_gray2 span {
+  font-weight: 300;
+  font-size: small;
+}
+.back_gray2 p {
+  font-size: 14px;
+}
+
+.down_payment {
+  margin-top: 20px;
+}
+.down_payment_box {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #7e8388;
+  height: 30px;
+}
+.back_gray2 .bold_bottom {
+  font-size: 14px;
+  /* position: absolute; */
+  margin-top: 30px;
+}
+.back_gray2 .month_box_row {
+  display: flex;
+  flex-direction: row;
+}
+.back_gray2 .month_box {
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 2px solid #0074d9;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#price_summary2 {
+  margin-top: 500px;
+}
+#payment_plan2 {
+  margin-top: 500px;
+}
+
+.price_summary {
+  margin-top: 30px;
+}
+.price_row_summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.buy_now_button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.buy_now_button a {
+  text-decoration: none;
+  color: white;
+  background-color: #0074d9;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 20px;
+}
+
+footer {
+  margin-top: 150px;
+  background-color: #00172b;
+  width: "100%";
+  display: flex;
+  flex-direction: row;
+  padding: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+footer .terms {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 32%;
+}
+footer .terms p {
+  font-size: 11px;
+}
+footer .logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 7%;
+}

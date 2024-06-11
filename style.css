@@ -272,14 +272,15 @@ footer .logos {
 .price_buy {
   font-size: 18px;
 }
-.price_buy button {
-  color: white;
-  background-color: #0074d9;
+.price_buy .exp_btn {
+  color: #0074d9;
+  background-color: transparent;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  border: none;
+  border: 3px solid #0074d9;
   font-family: "Poppins", sans-serif;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
 }

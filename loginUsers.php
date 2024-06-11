@@ -38,7 +38,7 @@ if (password_verify($password, $hashed_password)) {
     $_SESSION["fullname"] = $fullname;
 
     // Redirect user to home page
-    header("location: Home.html");
+    header("location: Home.php");
 } else {
     // Redirect user back to login page with error message
     header("location: Login.html?error=1");

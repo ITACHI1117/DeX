@@ -1,3 +1,20 @@
+<?php 
+
+// Start session
+session_start();
+
+function showstuff(){
+echo"<h1>hi</h1>";
+};
+
+// Check if the user is logged in, if not then redirect them to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: Login.html");
+    
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,10 +47,19 @@
         </div>
       </div>
       <div class="buttons">
-        <a href="./Login.html"
+        <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        echo "<p>Welcome, " . htmlspecialchars($_SESSION["fullname"]) . "!</p>";
+    }else{
+      echo "<a href='./Login.html'
+      ><button class='transparent_button'>Log in</button></a
+    >
+    <a href=''><button class='blue_buttom'>Sign up</button></a>";
+    }   ?>
+      <!-- <p>Welcome <?php echo htmlspecialchars($_SESSION["fullname"]); ?></p>  -->
+        <!-- <a href="./Login.html"
           ><button class="transparent_button">Log in</button></a
         >
-        <a href=""><button class="blue_buttom">Sign up</button></a>
+        <a href=""><button class="blue_buttom">Sign up</button></a> -->
       </div>
     </nav>
     <section>
@@ -71,7 +97,7 @@
             </div>
             <div class='price_buy'>
               <p>₦".$row['price']." </p>
-              <button>Buy now</button>
+             <a href='explore.html'><button class='exp_btn'>Explore</button></a> 
             </div>
           </div>
               ";
