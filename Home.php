@@ -66,19 +66,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="cars">
       <div class="cars_grid">
       <?php
-            // Database connection details
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "dex_hire_purchase";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            include "db_config.php";
 
             // SQL query to fetch user information
             $sql = "SELECT *  FROM vehicles";
@@ -97,7 +85,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
             <div class='price_buy'>
               <p>₦".$row['price']." </p>
-             <a href='explore.html'><button class='exp_btn'>Explore</button></a> 
+             <a href='explore.php?selectedCar=".$row['id']."'><button class='exp_btn'>Explore</button></a> 
             </div>
           </div>
               ";

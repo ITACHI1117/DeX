@@ -1,3 +1,19 @@
+<?php
+        // Check if 'selectedCar' parameter is present in the URL
+        if (isset($_GET['selectedCar'])) {
+            // Retrieve the 'selectedCar' parameter
+            $selectedCar = htmlspecialchars($_GET['selectedCar']);
+            // Display the retrieved parameter
+            // echo "<p>Selected Car: " . $selectedCar . "</p>";
+        } else {
+            echo "<p>No car selected.</p>";
+        }
+
+        include "db_config.php";
+
+        
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,21 +81,57 @@
     <hr>
     <div class="divider">
 <div class="first_section">
-  <h3>2024 Land Cruiser</h3>
+  <?php 
+   $sql = "SELECT year,name FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    echo "<h3>".$row["year"]." ".$row["name"]."</h3>";
+   }
+  ?>
+  
   <div class="price_range_row">
     <p id="pay_monthly">PAY MONTHLY</p>
     <p id="pay_full">PAY IN FULL</p>
   </div>
   
   <div class="back_gray" id="payment_plan">
-    <h1>₦26,410,000</h1>
-    <p>Estimated Selling Price = ₦26,410,000</p>
+  <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<h1>₦$formattedPrice</h1>";
+   
+    echo "<p>Estimated Selling Price = ₦$formattedPrice</p>";
+   }
+  ?>
+    <!-- <h1>₦26,410,000</h1> -->
+    <!-- <p>Estimated Selling Price = ₦26,410,000</p> -->
     <p class="bold_bottom">*We accept Visa and Mastercard debit cards.</p>
   </div>
   <div class="back_gray2" id="payment_plan2">
-    <h1 id="calculated_price">₦733,611<span>/mo</span></h1>
+  <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $newprice = $row["price"]/36;
+    $formattedPrice = number_format($newprice);
+    echo "<h1 id='calculated_price'>₦$formattedPrice<span>/mo</span></h1>";
+      }
+  ?>
+    <!-- <h1 id="calculated_price">₦733,611<span>/mo</span></h1> -->
     <p id="month_term">36 month term and 11.4% APR</p>
-    <p>Estimated Selling Price = ₦26,410,000 </p>
+    <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<p>Estimated Selling Price = ₦$formattedPrice </p>";
+      }
+  ?>
+    
     <div class="down_payment">
       <p>Down Payment</p>
       <div class="down_payment_box">₦3,800,000</div>
@@ -103,14 +155,35 @@
     <p>PRICING SUMMARY</p>
     <div class="price_row_summary">
    <p>Price of car</p>
-   <p>₦26,410,000</p>
+   <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<p>₦$formattedPrice</p>";
+   }
+  ?>
+   <!-- <p>₦26,410,000</p> -->
     </div>
     <div class="price_row_summary">
      <p>Total amount payable</p>
-     <p>₦26,410,000</p>
+     <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<p>₦$formattedPrice</p>";
+   }
+  ?>
+     <!-- <p>₦26,410,000</p> -->
       </div>
       <div class="buy_now_button">
-        <a href="">Buy now</a>
+        <?php
+        echo "<a href='Personal_details.php?selectedCar=$selectedCar'>Buy now</a>"
+        ?>
+        
       </div>
   </div>
 
@@ -124,7 +197,16 @@
     </div>
     <div class="price_row_summary">
    <p>Monthly Payment Of</p>
-   <p id="monthly_payment">₦738,283</p>
+   <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $newprice = $row["price"]/36;
+    $formattedPrice = number_format($newprice);
+    echo "<p id='monthly_payment'>₦$formattedPrice</p>";
+   }
+  ?>
+   <!-- <p id="monthly_payment">₦738,283</p> -->
     </div>
     <div class="price_row_summary">
    <p>Amount of interest</p>
@@ -132,16 +214,34 @@
     </div>
     <div class="price_row_summary">
    <p>Price of car</p>
-   <p>₦26,410,000</p>
+   <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<p>₦$formattedPrice</p>";
+   }
+  ?>
+   <!-- <p>₦26,410,000</p> -->
     </div>
     <div class="price_row_summary">
      <p>Total amount payable</p>
-     <p>₦26,410,000</p>
+     <?php 
+   $sql = "SELECT price FROM vehicles WHERE id = $selectedCar";
+   $result = $conn->query($sql);
+   while($row = $result->fetch_assoc()) {
+    $price =$row["price"];
+    $formattedPrice = number_format($price);
+    echo "<p>₦$formattedPrice</p>";
+   }
+  ?>
+     <!-- <p>₦26,410,000</p> -->
       </div>
       
   </div>
   <div class="buy_now_button">
-    <a href="Personal_details.html">Buy now</a>
+    <a href="Personal_details.php">Buy now</a>
   </div>
   
 </div>
