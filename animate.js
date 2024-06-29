@@ -174,6 +174,9 @@ if (queryParams.form == "submitted") {
 if (queryParams.form == "submitted" && queryParams.paid == "paid") {
   handleCheck2();
   console.log("done");
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 1000);
 }
 
 if (queryParams.paid == "notPaid") {

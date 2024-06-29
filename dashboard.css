@@ -84,13 +84,13 @@ nav .logo h1 {
   display: flex;
   justify-content: space-between;
   margin-right: 30px;
-  width: 60%;
+  width: 70%;
 }
 
 .control_panel_item {
   /* border: 1px solid #d9d9d9; */
   /* padding: 10px; */
-  width: 200px;
+  width: 250px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
   /* padding-left: 50px;
   padding-right: 50px; */
