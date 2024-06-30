@@ -162,6 +162,12 @@ hr {
   flex-direction: column;
 }
 
+#details_form2 {
+  flex-direction: column;
+  display: none;
+  margin-top: 400px;
+}
+
 .second_half_section div h1 {
   font-size: 40px;
 }

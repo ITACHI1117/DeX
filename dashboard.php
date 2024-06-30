@@ -1,3 +1,20 @@
+<?php
+  include "db_config.php";
+  // Start session
+session_start();
+
+function showstuff(){
+echo"<h1>hi</h1>";
+};
+
+// Check if the user is logged in, if not then redirect them to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: Login.html");
+    
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +37,7 @@
         </div>
         <div>
           <div class="nav_links">
-            <a href="dashboard.html">
+            <a href="dashboard.php">
               <div class="nav_link_container" style="background-color: #ebf5ff">
                 <div class="nav_link_icon">
                   <svg
@@ -77,7 +94,7 @@
               </div>
             </a>
 
-            <a href="balance.html">
+            <a href="balance.php">
               <div class="nav_link_container">
                 <div class="nav_link_icon">
                   <svg
@@ -106,7 +123,7 @@
               </div>
             </a>
 
-            <a href="inbox.html">
+            <a href="inbox.php">
               <div class="nav_link_container">
                 <div class="nav_link_icon">
                   <svg
@@ -166,7 +183,10 @@
                   fill-opacity="0.8"
                 />
               </svg>
-              <p>Profile</p>
+              <?php 
+              $Logged_in_user = $_SESSION['fullname'];
+              echo "<p>$Logged_in_user</p>";
+              ?>
             </div>
           </div>
         </div>
@@ -176,7 +196,23 @@
           <div class="control_panel_item">
             <p>ACTIVE PAYMENTS</p>
             <div class="value_and_icon">
-              <h1>1</h1>
+              <?php 
+              $Logged_in_userID = $_SESSION['id'];
+              $sql = "SELECT COUNT(id) AS value_count FROM payments WHERE id = ?";
+              $stmt = $conn->prepare($sql);
+              $stmt->bind_param("s", $Logged_in_userID); // Adjust the data type if needed (e.g., "i" for integer)
+              $stmt->execute();
+              $result = $stmt->get_result();
+          
+              // Check if the query returned a result
+              if ($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                  echo "<h1>" . $row["value_count"] . "</h1>";
+              } else {
+                  echo "<h1>No results found</h1>";
+              }
+              ?>
+              
               <svg
                 width="32"
                 height="32"
@@ -198,7 +234,7 @@
                 </g>
               </svg>
             </div>
-            <a href="">
+            <a href="payments.php">
               <div class="views_container">
                 <p>View payments</p>
                 <svg
@@ -219,7 +255,23 @@
           <div class="control_panel_item">
             <p>BALANCE</p>
             <div class="value_and_icon">
-              <h1>₦ 22,610,000</h1>
+              <?php 
+// SQL query to fetch user information
+              $Logged_in_userID = $_SESSION['id'];
+            $sql = "SELECT SUM(amount_remaining) AS Total FROM balance WHERE id = '$Logged_in_userID'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+              // Fetch the result row
+              $row = $result->fetch_assoc();
+              // Echo the result
+              // echo "Total StudentID: " . $row["TotalStudentID"];
+              echo "<h1>".number_format($row["Total"])."</h1>";
+          }
+
+            
+              ?>
+              
               <svg
                 width="32"
                 height="33"
@@ -237,7 +289,7 @@
                 </g>
               </svg>
             </div>
-            <a href="">
+            <a href="balance.php">
               <div class="views_container">
                 <p>View balance</p>
                 <svg
@@ -276,7 +328,7 @@
                 </g>
               </svg>
             </div>
-            <a href="">
+            <a href="inbox.php">
               <div class="views_container">
                 <p>View inbox</p>
                 <svg

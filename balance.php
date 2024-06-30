@@ -14,14 +14,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payments</title>
-    <link rel="stylesheet" href="payments.css" />
+    <title>Balance</title>
+    <link rel="stylesheet" href="balance.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,12 +31,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <body>
     <section class="row_container">
       <nav>
-        <a style="text-decoration: none; color:black;" href="./Home.php">
         <div class="logo">
           <h1>DeX.</h1>
         </div>
-        </a>
-        
         <div>
           <div class="nav_links">
             <a href="dashboard.php">
@@ -70,8 +66,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               </div>
             </a>
 
-            <a href="payments.html">
-              <div class="nav_link_container" style="background-color: #ebf5ff">
+            <a href="payments.php">
+              <div class="nav_link_container">
                 <div class="nav_link_icon">
                   <svg
                     width="18"
@@ -82,22 +78,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   >
                     <path
                       d="M16 4.2501H15.75V2.0001C15.7474 1.53678 15.5622 1.09318 15.2345 0.765555C14.9069 0.437935 14.4633 0.252715 14 0.250095C13.9207 0.235645 13.8393 0.235645 13.76 0.250095L1.86 4.2501H1.75H1.59L1.42 4.3101H1.28L1.12 4.4001L1 4.5701L0.860003 4.6901L0.750003 4.7901L0.630004 4.9401C0.598004 4.9688 0.570973 5.00259 0.550003 5.0401C0.512883 5.09792 0.479483 5.15804 0.450003 5.2201L0.390004 5.3301C0.362164 5.40192 0.338783 5.47539 0.320003 5.5501C0.324503 5.58663 0.324503 5.62357 0.320003 5.6601C0.309673 5.7732 0.309673 5.887 0.320003 6.0001V16.0001C0.322103 16.4516 0.497653 16.885 0.810343 17.2107C1.12303 17.5365 1.54895 17.7296 2 17.7501H16C16.4633 17.7474 16.9069 17.5622 17.2345 17.2346C17.5622 16.907 17.7474 16.4634 17.75 16.0001V6.0001C17.7474 5.53678 17.5622 5.09318 17.2345 4.76556C16.9069 4.43794 16.4633 4.25272 16 4.2501ZM14.08 1.7601C14.1293 1.77827 14.1719 1.81091 14.2022 1.85375C14.2325 1.89659 14.2492 1.94761 14.25 2.0001V4.2501H6.62L14.08 1.7601ZM16.25 16.0001C16.25 16.0664 16.2237 16.13 16.1768 16.1768C16.1299 16.2237 16.0663 16.2501 16 16.2501H2C1.9337 16.2501 1.87011 16.2237 1.82322 16.1768C1.77634 16.13 1.75 16.0664 1.75 16.0001V6.0001C1.75 5.9338 1.77634 5.8702 1.82322 5.82332C1.87011 5.77644 1.9337 5.7501 2 5.7501H16C16.0663 5.7501 16.1299 5.77644 16.1768 5.82332C16.2237 5.8702 16.25 5.9338 16.25 6.0001V16.0001Z"
-                      fill="#0074D9"
+                      fill="#3A4046"
                       fill-opacity="0.8"
                     />
                     <path
                       d="M13.5 12.2502C14.1904 12.2502 14.75 11.6906 14.75 11.0002C14.75 10.3098 14.1904 9.75024 13.5 9.75024C12.8096 9.75024 12.25 10.3098 12.25 11.0002C12.25 11.6906 12.8096 12.2502 13.5 12.2502Z"
-                      fill="#0074D9"
+                      fill="#3A4046"
                       fill-opacity="0.8"
                     />
                   </svg>
                 </div>
-                <p style="color: #0074d9">Payments</p>
+                <p>Payments</p>
               </div>
             </a>
 
             <a href="balance.php">
-              <div class="nav_link_container">
+              <div class="nav_link_container" style="background-color: #ebf5ff">
                 <div class="nav_link_icon">
                   <svg
                     width="22"
@@ -108,20 +104,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   >
                     <path
                       d="M15.755 1H6.245C5.086 1 4.507 1 4.039 1.163C3.59778 1.31946 3.19856 1.5755 2.87234 1.91126C2.54612 2.24702 2.30168 2.65345 2.158 3.099C2 3.581 2 4.177 2 5.37V19.374C2 20.232 2.985 20.688 3.608 20.118C3.78279 19.9565 4.01202 19.8668 4.25 19.8668C4.48798 19.8668 4.71721 19.9565 4.892 20.118L5.375 20.56C5.68121 20.8432 6.08293 21.0004 6.5 21.0004C6.91707 21.0004 7.31879 20.8432 7.625 20.56C7.93121 20.2768 8.33293 20.1196 8.75 20.1196C9.16707 20.1196 9.56879 20.2768 9.875 20.56C10.1812 20.8432 10.5829 21.0004 11 21.0004C11.4171 21.0004 11.8188 20.8432 12.125 20.56C12.4312 20.2768 12.8329 20.1196 13.25 20.1196C13.6671 20.1196 14.0688 20.2768 14.375 20.56C14.6812 20.8432 15.0829 21.0004 15.5 21.0004C15.9171 21.0004 16.3188 20.8432 16.625 20.56L17.108 20.118C17.2828 19.9565 17.512 19.8668 17.75 19.8668C17.988 19.8668 18.2172 19.9565 18.392 20.118C19.015 20.688 20 20.232 20 19.374V5.37C20 4.177 20 3.58 19.842 3.1C19.6985 2.65423 19.4542 2.24757 19.1279 1.91162C18.8017 1.57567 18.4024 1.31949 17.961 1.163C17.493 1 16.914 1 15.755 1Z"
-                      stroke="#3A4046"
+                      stroke="#0074D9"
                       stroke-opacity="0.8"
                       stroke-width="1.5"
                     />
                     <path
                       d="M9.5 10H16M6 10H6.5M6 6.5H6.5M6 13.5H6.5M9.5 6.5H16M9.5 13.5H16"
-                      stroke="#3A4046"
+                      stroke="#0074D9"
                       stroke-opacity="0.8"
                       stroke-width="1.5"
                       stroke-linecap="round"
                     />
                   </svg>
                 </div>
-                <p>Balance</p>
+                <p style="color: #0074d9">Balance</p>
               </div>
             </a>
 
@@ -189,7 +185,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               $Logged_in_user = $_SESSION['fullname'];
               echo "<p>$Logged_in_user</p>";
               ?>
-              
             </div>
           </div>
         </div>
@@ -199,41 +194,41 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <table>
               <tr>
                 <th>Duration</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Down Payment</th>
+                <th>Total Amount to be paid</th>
                 <th>Amount Per Month</th>
-                <th>Remaining Payment</th>
+                <th>Amount paid(+ Down Payment)</th>
+                <th>Amount Remaining</th>
               </tr>
               <?php 
                 // SQL query to fetch user information
                 $Logged_in_userID = $_SESSION['id'];
-            $sql = "SELECT *  FROM payments WHERE id = '$Logged_in_userID'";
+            $sql = "SELECT *  FROM balance WHERE id = '$Logged_in_userID'";
             $result = $conn->query($sql);
 
             while($row = $result->fetch_assoc()) {
-              $startDate = str_replace('_', ' ', $row['start_date']);
-              $endDate = str_replace('_', ' ', $row['end_date']);
-              $downPayment = number_format($row['down_payment']);
-              $amountPerMonth = number_format($row['amount_per_month']);
+              $total_amount_to_be_paid = number_format($row['total_amount_to_be_paid']);
+              $amount_per_month = number_format($row['amount_per_month']);
+              $ap_plus_dp = number_format($row['ap_plus_dp']);
+              $amount_remaining = number_format($row['amount_remaining']);
 
-              if($row['remaining_payment'] == "0"){
-                $remaining_payment = "<td>Completed Payment</td>";
+              if($row['amount_remaining'] == "0"){
+                $amount_remaining = "<td>Completed Payment</td>";
                 
               }else{
-                $remaining_payment = "<td>".$row['remaining_payment']." Months</td>";
+                $amount_remaining = "<td>$amount_remaining</td>";
               }
               echo "<tr>
                 <td>".$row['duration']." Month</td>
-                <td>$startDate</td>
-                <td>$endDate</td>
-                <td>$downPayment</td>
-                <td>$amountPerMonth</td>
-                $remaining_payment
+                <td>$total_amount_to_be_paid</td>
+                <td>$amount_per_month</td>
+                <td>$ap_plus_dp</td>
+                $amount_remaining
+                
               </tr>";
             }
 
               ?>  
+              
             </table>
           </div>
         </section>

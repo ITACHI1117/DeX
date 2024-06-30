@@ -1,3 +1,19 @@
+<?php
+  include "db_config.php";
+  // Start session
+session_start();
+
+function showstuff(){
+echo"<h1>hi</h1>";
+};
+
+// Check if the user is logged in, if not then redirect them to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: Login.html");
+    
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +36,7 @@
         </div>
         <div>
           <div class="nav_links">
-            <a href="dashboard.html">
+            <a href="dashboard.php">
               <div class="nav_link_container">
                 <div class="nav_link_icon">
                   <svg
@@ -76,8 +92,8 @@
               </div>
             </a>
 
-            <a href="balance.html">
-              <div class="nav_link_container" style="background-color: #ebf5ff">
+            <a href="balance.php">
+              <div class="nav_link_container">
                 <div class="nav_link_icon">
                   <svg
                     width="22"
@@ -88,25 +104,25 @@
                   >
                     <path
                       d="M15.755 1H6.245C5.086 1 4.507 1 4.039 1.163C3.59778 1.31946 3.19856 1.5755 2.87234 1.91126C2.54612 2.24702 2.30168 2.65345 2.158 3.099C2 3.581 2 4.177 2 5.37V19.374C2 20.232 2.985 20.688 3.608 20.118C3.78279 19.9565 4.01202 19.8668 4.25 19.8668C4.48798 19.8668 4.71721 19.9565 4.892 20.118L5.375 20.56C5.68121 20.8432 6.08293 21.0004 6.5 21.0004C6.91707 21.0004 7.31879 20.8432 7.625 20.56C7.93121 20.2768 8.33293 20.1196 8.75 20.1196C9.16707 20.1196 9.56879 20.2768 9.875 20.56C10.1812 20.8432 10.5829 21.0004 11 21.0004C11.4171 21.0004 11.8188 20.8432 12.125 20.56C12.4312 20.2768 12.8329 20.1196 13.25 20.1196C13.6671 20.1196 14.0688 20.2768 14.375 20.56C14.6812 20.8432 15.0829 21.0004 15.5 21.0004C15.9171 21.0004 16.3188 20.8432 16.625 20.56L17.108 20.118C17.2828 19.9565 17.512 19.8668 17.75 19.8668C17.988 19.8668 18.2172 19.9565 18.392 20.118C19.015 20.688 20 20.232 20 19.374V5.37C20 4.177 20 3.58 19.842 3.1C19.6985 2.65423 19.4542 2.24757 19.1279 1.91162C18.8017 1.57567 18.4024 1.31949 17.961 1.163C17.493 1 16.914 1 15.755 1Z"
-                      stroke="#0074D9"
+                      stroke="#3A4046"
                       stroke-opacity="0.8"
                       stroke-width="1.5"
                     />
                     <path
                       d="M9.5 10H16M6 10H6.5M6 6.5H6.5M6 13.5H6.5M9.5 6.5H16M9.5 13.5H16"
-                      stroke="#0074D9"
+                      stroke="#3A4046"
                       stroke-opacity="0.8"
                       stroke-width="1.5"
                       stroke-linecap="round"
                     />
                   </svg>
                 </div>
-                <p style="color: #0074d9">Balance</p>
+                <p >Balance</p>
               </div>
             </a>
 
-            <a href="inbox.html">
-              <div class="nav_link_container">
+            <a href="inbox.php">
+              <div class="nav_link_container" style="background-color: #ebf5ff">
                 <div class="nav_link_icon">
                   <svg
                     width="22"
@@ -118,7 +134,7 @@
                     <g clip-path="url(#clip0_489_95)">
                       <path
                         d="M15.382 3C15.7259 3.00013 16.0639 3.08891 16.3634 3.25777C16.6629 3.42664 16.9139 3.66987 17.092 3.964L17.171 4.106L20.683 11.131C20.8563 11.4773 20.9609 11.8539 20.991 12.24L21 12.472V18C21.0002 18.5046 20.8096 18.9906 20.4665 19.3605C20.1234 19.7305 19.6532 19.9572 19.15 19.995L19 20H3C2.49542 20.0002 2.00943 19.8096 1.63945 19.4665C1.26947 19.1234 1.04284 18.6532 1.005 18.15L1 18V12.472C0.999698 12.0847 1.07441 11.7009 1.22 11.342L1.317 11.13L4.829 4.106C4.98277 3.79806 5.21341 3.53501 5.49861 3.3423C5.78381 3.1496 6.11392 3.03376 6.457 3.006L6.618 3H15.382ZM7 13H3V18H19V13H15V13.5C15 13.8978 14.842 14.2794 14.5607 14.5607C14.2794 14.842 13.8978 15 13.5 15H8.5C8.10218 15 7.72064 14.842 7.43934 14.5607C7.15804 14.2794 7 13.8978 7 13.5V13ZM15.382 5H6.618L3.618 11H7.5C7.87288 11 8.23239 11.1389 8.50842 11.3896C8.78445 11.6403 8.9572 11.9848 8.993 12.356L9 12.5V13H13V12.5C13 12.1271 13.1389 11.7676 13.3896 11.4916C13.6403 11.2156 13.9848 11.0428 14.356 11.007L14.5 11H18.382L15.382 5Z"
-                        fill="#3A4046"
+                        fill="#0074D9"
                         fill-opacity="0.8"
                       />
                     </g>
@@ -129,7 +145,7 @@
                     </defs>
                   </svg>
                 </div>
-                <p>Inbox</p>
+                <p style="color: #0074d9">Inbox</p>
               </div>
             </a>
           </div>
@@ -165,36 +181,20 @@
                   fill-opacity="0.8"
                 />
               </svg>
-              <p>Profile</p>
+              <?php 
+              $Logged_in_user = $_SESSION['fullname'];
+              echo "<p>$Logged_in_user</p>";
+              ?>
             </div>
           </div>
         </div>
 
         <section class="control_panel">
-          <div class="table_container">
-            <table>
-              <tr>
-                <th>Duration</th>
-                <th>Total Amount to be paid</th>
-                <th>Amount Per Month</th>
-                <th>Amount paid(+ Down Payment)</th>
-                <th>Amount Remaining</th>
-              </tr>
-              <tr>
-                <td>36 Month</td>
-                <td>08/24/2024</td>
-                <td>08/24/2027</td>
-                <td>360,000,000</td>
-                <td>360,000,000</td>
-              </tr>
-              <tr>
-                <td>36 Month</td>
-                <td>08/24/2024</td>
-                <td>08/24/2027</td>
-                <td>360,000,000</td>
-                <td>360,000,000</td>
-              </tr>
-            </table>
+          <div class="inbox">
+            <h1>You have no Messages</h1>
+          </div>
+              
+            
           </div>
         </section>
       </section>

@@ -180,10 +180,7 @@
   ?>
      <!-- <p>₦26,410,000</p> -->
       </div>
-      <div class="buy_now_button">
-        <?php
-        echo "<a href='Personal_details.php?selectedCar=$selectedCar'>Buy now</a>"
-        ?>
+      <div id="buy_now_button1" class="buy_now_button">
         
       </div>
   </div>

@@ -10,6 +10,9 @@
   $downPayment = htmlspecialchars($_GET['downPayment']);
   $amountPerMonth = htmlspecialchars($_GET['amountPerMonth']);
   $remainingMonth = htmlspecialchars($_GET['remainingMonth']);
+  $fullPrice = htmlspecialchars($_GET['fullPrice']);
+
+
 
 
   }
@@ -95,6 +98,45 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 }
 update_payment();
+
+function update_balance(){
+  $userId = htmlspecialchars($_GET['userId']);
+  $duration = htmlspecialchars($_GET['duration']);
+  // $startDate = htmlspecialchars($_GET['startDate']);
+  // $endDate = htmlspecialchars($_GET['endDate']);
+  $downPayment = htmlspecialchars($_GET['downPayment']);
+  $amountPerMonth = htmlspecialchars($_GET['amountPerMonth']);
+  $fullPrice = htmlspecialchars($_GET['fullPrice']);
+
+
+  $ap_plus_dp = (int)$amountPerMonth + (int)$downPayment;
+  $new_amount_remaining = (int)$fullPrice - (int)$ap_plus_dp;
+  include "db_config.php";
+$sql = "INSERT INTO balance (id, duration, total_amount_to_be_paid, amount_per_month, ap_plus_dp, amount_remaining) VALUES (?, ?, ?, ?, ?, ?)";
+
+$stmt = mysqli_stmt_init($conn);
+
+// Check if the SQL statement is valid
+if (!mysqli_stmt_prepare($stmt, $sql)) {
+    die(mysqli_error($conn));
+}
+
+mysqli_stmt_bind_param($stmt,"ssiiii", $userId, $duration, $fullPrice, $amountPerMonth, $ap_plus_dp, $new_amount_remaining);
+
+// Execute the statement
+if ($stmt->execute()) {
+    // echo "User registered successfully.";
+     
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close the statement and conn
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+}
+update_balance();
 }
 
       else {
@@ -249,10 +291,10 @@ update_payment();
       
     </section>
     <section class="second_half_section">
-        <!-- <div id="details_form">
+        <div id="details_form">
             <h1>Personal details</h1>
             <p>Please check these details match your driving license</p>
-            <form action="fill_personal_details_payment_form.php" method="post" enctype="multipart/form-data">
+            <form id="form" action="fill_personal_details_payment_form.php" method="post" enctype="multipart/form-data">
                <label for="title">Title</label>
                <p>We need this for the car’s paperwork</p>
                <select required name="title" id="">
@@ -281,15 +323,16 @@ update_payment();
                echo "<input type='text' hidden name='downPayment' value='$downPayment'>";
                echo "<input type='text' hidden name='amountPerMonth' value='$amountPerMonth'>";
                echo "<input type='text' hidden name='remainingMonth' value='$remainingMonth'>";
+               echo "<input type='text' hidden name='fullPrice' value='$fullPrice'>";
                ?>
-               <button id="continue_button">Continue</button>
+               <button type="submit" id="continue_button">Continue</button>
             </form>
-        </div> -->
+        </div>
 
         <div id="details_form2">
             <h1>Payment details</h1>
             
-            <form action="fill_personal_details_payment_form.php" method="post" enctype="multipart/form-data">
+            <form id="form2" >
                <label for="title">Payment method</label>
                <div class="card_payment_method">
                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -326,7 +369,7 @@ update_payment();
                echo "<input type='text' hidden name='amountPerMonth' value='$amountPerMonth'>";
                echo "<input type='text' hidden name='remainingMonth' value='$remainingMonth'>";
                ?>
-               <button id="continue_button">Continue</button>
+               <button  id="continue_button2">Continue</button>
             </form>
         </div>
 

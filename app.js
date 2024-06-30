@@ -138,9 +138,9 @@ const monthly_payment = document.getElementById("monthly_payment");
 const price_form_database = document.getElementById("price_form_database");
 
 // Getting the price form html which was gotten from the database
-const full_Price = price_form_database.innerHTML;
+const fullPrice = price_form_database.innerHTML;
 // converting the price into a number
-const numbers = full_Price.match(/\d+/g);
+const numbers = fullPrice.match(/\d+/g);
 if (numbers) {
   // Convert the found numbers to integers and log them
   var intNumbers = numbers.map(Number);
@@ -170,6 +170,14 @@ function getQueryParams() {
 const Months = [36, 48, 60, 72, 84];
 const month_list = document.getElementById("month_list");
 const buy_now_button = document.getElementById("buy_now_button");
+const buy_now_button1 = document.getElementById("buy_now_button1");
+
+// Getting today Date
+let today = new Date();
+let formattedToday = today.toDateString().replace(/ /g, "_");
+
+console.log(formattedToday);
+buy_now_button1.innerHTML = `<a href='Personal_details.php?selectedCar=${queryParams.selectedCar}&userId=${queryParams.userId}&fullPrice=${fullPrice}&duration=0&startDate=${formattedToday}&endDate=${formattedToday}&downPayment=${fullPrice}&amountPerMonth=0&remainingMonth=0'>Buy now</a>`;
 
 buy_now_button.innerHTML = `<a href='Personal_details.php?duration=${Months[0]}'>Buy now</a>`;
 
@@ -198,7 +206,7 @@ function populateList() {
     if (value == 36) {
       listItem.style.backgroundColor = "#0074D9";
       listItem.style.color = "white";
-      buy_now_button.innerHTML = `<a href='Personal_details.php?selectedCar=${queryParams.selectedCar}&userId=${queryParams.userId}&duration=${value}&startDate=${formattedToday}&endDate=${formattedEndDate}&downPayment=3800000&amountPerMonth=${newprice}&remainingMonth=${value}'>Buy now</a>`;
+      buy_now_button.innerHTML = `<a href='Personal_details.php?selectedCar=${queryParams.selectedCar}&userId=${queryParams.userId}&fullPrice=${fullPrice}&duration=${value}&startDate=${formattedToday}&endDate=${formattedEndDate}&downPayment=3800000&amountPerMonth=${newprice}&remainingMonth=${value}'>Buy now</a>`;
     }
     // Add a click event listener to log the clicked value
     listItem.addEventListener("click", () => {
@@ -217,7 +225,7 @@ function populateList() {
           queryParams.selectedCar
         }&userId=${
           queryParams.userId
-        }&duration=${value}&startDate=${formattedToday}&endDate=${formattedEndDate}&downPayment=3800000&amountPerMonth=${newprice}&remainingMonth=${
+        }&fullPrice=${fullPrice}&duration=${value}&startDate=${formattedToday}&endDate=${formattedEndDate}&downPayment=3800000&amountPerMonth=${newprice}&remainingMonth=${
           value - 1
         }'>Buy now</a>`;
       }
