@@ -149,7 +149,11 @@ hr {
 /* .second_half_section {
   width: 50%;
 } */
-.second_half_section div {
+.second_half_section #details_form {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.second_half_section #details_form2 {
   padding-left: 30px;
   padding-top: 30px;
 }
@@ -197,6 +201,32 @@ hr {
   background-color: #0074d9;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
+}
+
+/* Payment Details */
+.card_payment_method {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+.EX_date_and_SC_code {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.EX_date_and_SC_code .EX {
+  display: flex;
+  flex-direction: column;
+}
+.EX_date_and_SC_code .SC {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
 }
 
 /* footer */

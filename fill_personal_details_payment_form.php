@@ -1,5 +1,6 @@
 <?php
 
+
 function generateTextReferenceID($prefix = "REF") {
     // Generate a unique reference ID using the current timestamp and a random number
     $timestamp = time(); // Current Unix timestamp
@@ -20,6 +21,13 @@ $lastname = $_POST['lastname'];
 $mobile_number = $_POST['mobile_number'];
 $home_address = $_POST['home_address'];
 $selectedCar = $_POST['selectedCar'];
+$userId = $_POST['userId'];
+$duration = $_POST['duration'];
+$startDate = $_POST['startDate'];
+$endDate = $_POST['endDate'];
+$downPayment = $_POST['downPayment'];
+$amountPerMonth = $_POST['amountPerMonth'];
+$remainingMonth = $_POST['remainingMonth'];
 
 
 $ammount_paid = "";
@@ -55,7 +63,7 @@ mysqli_stmt_bind_param($stmt,"ssssisssssssss", $random_id, $title, $firstname, $
 if ($stmt->execute()) {
     // echo "saved  successfully.";
      // Redirect user to home page
-    header("location: Personal_details.php?selectedCar=$selectedCar&userid=$random_id&form=submitted&paid=notPaid&price=$price&firstname=$firstname&lastname=$lastname&mobile_number=$mobile_number&home_address=$home_address&car_name=$car_name");
+    header("location: Personal_details.php?selectedCar=$selectedCar&userId=$userId&duration=$duration&startDate=$startDate&endDate=$endDate&downPayment=3800000&amountPerMonth=$amountPerMonth&remainingMonth=$remainingMonth&userid=$random_id&form=submitted&paid=notPaid&price=$price&firstname=$firstname&lastname=$lastname&mobile_number=$mobile_number&home_address=$home_address&car_name=$car_name");
 
 
 } else {

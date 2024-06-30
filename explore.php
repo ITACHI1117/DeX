@@ -162,6 +162,7 @@
     $price =$row["price"];
     $formattedPrice = number_format($price);
     echo "<p>₦$formattedPrice</p>";
+    echo "<p style='display:none;' id='price_form_database'>$price</p>";
    }
   ?>
    <!-- <p>₦26,410,000</p> -->
@@ -240,8 +241,8 @@
       </div>
       
   </div>
-  <div class="buy_now_button">
-    <a href="Personal_details.php">Buy now</a>
+  <div id="buy_now_button" class="buy_now_button">
+    
   </div>
   
 </div>

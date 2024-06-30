@@ -1,10 +1,26 @@
 <?php
+  include "db_config.php";
+
+  if (isset($_GET['duration'])) {
+  // Getting Payment Information
+  $userId = htmlspecialchars($_GET['userId']);
+  $duration = htmlspecialchars($_GET['duration']);
+  $startDate = htmlspecialchars($_GET['startDate']);
+  $endDate = htmlspecialchars($_GET['endDate']);
+  $downPayment = htmlspecialchars($_GET['downPayment']);
+  $amountPerMonth = htmlspecialchars($_GET['amountPerMonth']);
+  $remainingMonth = htmlspecialchars($_GET['remainingMonth']);
+
+
+  }
+
         // Check if 'selectedCar' parameter is present in the URL
         if (isset($_GET['selectedCar'])) {
             // Retrieve the 'selectedCar' parameter
             $selectedCar = htmlspecialchars($_GET['selectedCar']);
+           
             // Display the retrieved parameter
-            // echo "<p>Selected Car: " . $selectedCar . "</p>";
+            // echo "<p>duration: " . $endDate . "</p>";
         } else {
             echo "<p>No car selected.</p>";
         }
@@ -16,11 +32,45 @@
 
           if($payment_confirmation == "paid"){
             // echo "<p>Payment Successful! Your car has been booked.</p>";
+// Update the payment status in the databse
+function update_personal_details_and_paymentinfo(){
+  include "db_config.php";
+  $sql = "UPDATE `personal_details_and_paymentinfo` SET `payment`= ?";
 
-            // Hash the password
-include "db_config.php";
-// Prepare SQL statement
-$sql = "UPDATE `personal_details_and_paymentinfo` SET `payment`= ?";
+  $stmt = mysqli_stmt_init($conn);
+  
+  // Check if the SQL statement is valid
+  if (!mysqli_stmt_prepare($stmt, $sql)) {
+      die(mysqli_error($conn));
+  }
+  
+  mysqli_stmt_bind_param($stmt,"s", $payment_confirmation);
+  
+  // Execute the statement
+  if ($stmt->execute()) {
+      // echo "Updated";
+       // Redirect user to home page
+      //  header("location: Login.html");
+  } else {
+      echo "Error: " . $stmt->error;
+  }
+  
+  // Close the statement and connection
+  
+  mysqli_stmt_close($stmt);
+  mysqli_close($conn);
+}
+update_personal_details_and_paymentinfo();
+function update_payment(){
+  $userId = htmlspecialchars($_GET['userId']);
+  $duration = htmlspecialchars($_GET['duration']);
+  $startDate = htmlspecialchars($_GET['startDate']);
+  $endDate = htmlspecialchars($_GET['endDate']);
+  $downPayment = htmlspecialchars($_GET['downPayment']);
+  $amountPerMonth = htmlspecialchars($_GET['amountPerMonth']);
+  $remainingMonth = htmlspecialchars($_GET['remainingMonth']);
+  include "db_config.php";
+$sql = "INSERT INTO payments (id, duration, start_date, end_date, down_payment, amount_per_month, remaining_payment) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = mysqli_stmt_init($conn);
 
@@ -29,26 +79,25 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
     die(mysqli_error($conn));
 }
 
-mysqli_stmt_bind_param($stmt,"s", $payment_confirmation);
+mysqli_stmt_bind_param($stmt,"sissiii", $userId, $duration, $startDate, $endDate, $downPayment, $amountPerMonth, $remainingMonth);
 
 // Execute the statement
 if ($stmt->execute()) {
-    // echo "Updated";
-     // Redirect user to home page
-    //  header("location: Login.html");
+    // echo "User registered successfully.";
+     
 } else {
     echo "Error: " . $stmt->error;
 }
 
-// Close the statement and connection
+// Close the statement and conn
 
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
-          }
-           
-          // Display the retrieved parameter
-          // echo "<p>Selected Car: " . $selectedCar . "</p>";
-      } else {
+}
+update_payment();
+}
+
+      else {
           // echo "<p>No car selected.</p>";
       }
 
@@ -56,7 +105,7 @@ mysqli_close($conn);
         include "db_config.php";
 
         
-
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,7 +249,7 @@ mysqli_close($conn);
       
     </section>
     <section class="second_half_section">
-        <div id="details_form">
+        <!-- <div id="details_form">
             <h1>Personal details</h1>
             <p>Please check these details match your driving license</p>
             <form action="fill_personal_details_payment_form.php" method="post" enctype="multipart/form-data">
@@ -225,6 +274,57 @@ mysqli_close($conn);
                <input required type="address" name="home_address">
                <?php 
                echo "<input type='text' hidden name='selectedCar' value='$selectedCar'>";
+               echo "<input type='text' hidden name='userId' value='$userId'>";
+               echo "<input type='text' hidden name='duration' value='$duration'>";
+               echo "<input type='text' hidden name='startDate' value='$startDate'>";
+               echo "<input type='text' hidden name='endDate' value='$endDate'>";
+               echo "<input type='text' hidden name='downPayment' value='$downPayment'>";
+               echo "<input type='text' hidden name='amountPerMonth' value='$amountPerMonth'>";
+               echo "<input type='text' hidden name='remainingMonth' value='$remainingMonth'>";
+               ?>
+               <button id="continue_button">Continue</button>
+            </form>
+        </div> -->
+
+        <div id="details_form2">
+            <h1>Payment details</h1>
+            
+            <form action="fill_personal_details_payment_form.php" method="post" enctype="multipart/form-data">
+               <label for="title">Payment method</label>
+               <div class="card_payment_method">
+               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 17.625C2 18.3212 2.27656 18.9889 2.76884 19.4812C3.26113 19.9734 3.92881 20.25 4.625 20.25H20.375C21.0712 20.25 21.7389 19.9734 22.2312 19.4812C22.7234 18.9889 23 18.3212 23 17.625V10.4062H2V17.625ZM5.09375 14.0625C5.09375 13.6895 5.24191 13.3319 5.50563 13.0681C5.76935 12.8044 6.12704 12.6562 6.5 12.6562H8.75C9.12296 12.6562 9.48065 12.8044 9.74437 13.0681C10.0081 13.3319 10.1562 13.6895 10.1562 14.0625V15C10.1562 15.373 10.0081 15.7306 9.74437 15.9944C9.48065 16.2581 9.12296 16.4062 8.75 16.4062H6.5C6.12704 16.4062 5.76935 16.2581 5.50563 15.9944C5.24191 15.7306 5.09375 15.373 5.09375 15V14.0625ZM20.375 3.75H4.625C3.92881 3.75 3.26113 4.02656 2.76884 4.51884C2.27656 5.01113 2 5.67881 2 6.375V7.59375H23V6.375C23 5.67881 22.7234 5.01113 22.2312 4.51884C21.7389 4.02656 21.0712 3.75 20.375 3.75Z" fill="black"/>
+</svg>
+               <p>Card</p>
+               </div>
+       
+               <label for="firstname">Name on card</label>
+               <input required type="text" name="name_on_card" placeholder="Jon Smith" style="font-family: 'Poppins', sans-serif;">
+               <label for="lastname">Card number</label>
+               <input  required type="text" name="card_number" placeholder="0000 0000 0000 0000" style="font-family: 'Poppins', sans-serif;">
+               <div class="EX_date_and_SC_code">
+                <div class="EX">
+                <label for="mobile number">Expiry date</label>
+                <input required type="text" name="EX_date" placeholder="MM / YY" style="font-family: 'Poppins', sans-serif;">
+                </div>
+              <div class="SC">
+              <label for="home address">Security code</label>
+              <input required type="address" name="SC_code" placeholder="CVV" style="font-family: 'Poppins', sans-serif;">
+              </div>
+               
+               </div>
+
+               
+               
+               <?php 
+               echo "<input type='text' hidden name='selectedCar' value='$selectedCar'>";
+               echo "<input type='text' hidden name='userId' value='$userId'>";
+               echo "<input type='text' hidden name='duration' value='$duration'>";
+               echo "<input type='text' hidden name='startDate' value='$startDate'>";
+               echo "<input type='text' hidden name='endDate' value='$endDate'>";
+               echo "<input type='text' hidden name='downPayment' value='$downPayment'>";
+               echo "<input type='text' hidden name='amountPerMonth' value='$amountPerMonth'>";
+               echo "<input type='text' hidden name='remainingMonth' value='$remainingMonth'>";
                ?>
                <button id="continue_button">Continue</button>
             </form>

@@ -85,7 +85,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
             <div class='price_buy'>
               <p>₦".$row['price']." </p>
-             <a href='explore.php?selectedCar=".$row['id']."'><button class='exp_btn'>Explore</button></a> 
+             <a href='explore.php?selectedCar=".$row['id']."&userId=".$_SESSION["id"]."'><button class='exp_btn'>Explore</button></a> 
             </div>
           </div>
               ";

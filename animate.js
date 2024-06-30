@@ -143,7 +143,7 @@ function makePayment() {
     amount: 5000,
     currency: "NGN",
     payment_options: "card, banktransfer, ussd",
-    redirect_url: `http://172.20.10.11/Dex/Personal_details.php?selectedCar=${queryParams.selectedCar}&userid=${queryParams.userid}&form=submitted&paid=paid`,
+    redirect_url: `http://172.20.10.11/Dex/Personal_details.php?selectedCar=${queryParams.selectedCar}&userId=${queryParams.userId}&duration=${queryParams.duration}&startDate=${queryParams.startDate}&endDate=${queryParams.endDate}&downPayment=3800000&amountPerMonth=${queryParams.amountPerMonth}&remainingMonth=${queryParams.remainingMonth}&userid=${queryParams.userid}&form=submitted&paid=paid`,
     meta: {
       source: "docs-inline-test",
       consumer_mac: "92a3-912ba-1192a",

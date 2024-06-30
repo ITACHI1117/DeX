@@ -90,10 +90,11 @@ nav .logo h1 {
 .control_panel {
   margin-left: 30px;
   margin-top: 20px;
-  display: grid;
+  display: flex;
   gap: 10px;
-  grid-template-columns: auto auto auto;
-  width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
+  width: 90%;
+  height: 200px;
 }
 
 .control_panel_item {
@@ -102,73 +103,29 @@ nav .logo h1 {
   width: 250px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
   /* padding-left: 50px;
-  padding-right: 50px; */
+      padding-right: 50px; */
 }
 /* tablet  */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .control_panel_item {
-    /* border: 1px solid #d9d9d9; */
-    /* padding: 10px; */
-    width: 250px;
-    margin-right: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
-    /* padding-left: 50px;
-    padding-right: 50px; */
-  }
-  .control_panel {
-    margin-left: 30px;
-    margin-top: 20px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto auto;
-    width: 70%;
-  }
-}
 
-/* phone */
-
-@media screen and (max-width: 767px) {
-  .control_panel_item {
-    /* border: 1px solid #d9d9d9; */
-    /* padding: 10px; */
-    width: 200px;
-    margin-right: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
-    /* padding-left: 50px;
-    padding-right: 50px; */
-  }
-  .control_panel {
-    margin-left: 30px;
-    margin-top: 20px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto;
-    width: 70%;
-  }
-}
-
-.control_panel_item p {
-  color: #0074d9;
-  padding: 10px;
-}
-.value_and_icon {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
-.value_and_icon h1 {
-  font-size: 20px;
-}
-.views_container {
-  display: flex;
-  justify-content: space-between;
+table {
   margin-top: 20px;
-  background-color: #ebf5ff;
+  margin-left: 20px;
   width: 100%;
-  margin-bottom: 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
 }
-.control_panel_item a {
-  text-decoration: none;
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+}
+table,
+th,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+table th {
+  background-color: #ebf5ff;
   color: #0074d9;
 }
