@@ -162,6 +162,7 @@ nav .logo h1 {
 }
 .views_container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-top: 20px;
   background-color: #ebf5ff;

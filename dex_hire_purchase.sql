@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2024 at 12:06 PM
--- Server version: 10.4.32-MariaDB
+-- Generation Time: Jul 01, 2024 at 09:22 AM
+-- Server version: 10.4.32-MariaDB-log
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,6 +20,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `dex_hire_purchase`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `balance`
+--
+
+CREATE TABLE `balance` (
+  `id` varchar(200) NOT NULL,
+  `duration` varchar(200) NOT NULL,
+  `total_amount_to_be_paid` int(200) NOT NULL,
+  `amount_per_month` int(200) NOT NULL,
+  `ap_plus_dp` int(200) NOT NULL,
+  `amount_remaining` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `balance`
+--
+
+INSERT INTO `balance` (`id`, `duration`, `total_amount_to_be_paid`, `amount_per_month`, `ap_plus_dp`, `amount_remaining`) VALUES
+('6678835bb2d5cf7ef', '36', 55350000, 1537500, 5337500, 50012500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` varchar(200) NOT NULL,
+  `duration` int(200) NOT NULL,
+  `start_date` varchar(200) NOT NULL,
+  `end_date` varchar(200) NOT NULL,
+  `down_payment` int(200) NOT NULL,
+  `amount_per_month` int(200) NOT NULL,
+  `remaining_payment` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `duration`, `start_date`, `end_date`, `down_payment`, `amount_per_month`, `remaining_payment`) VALUES
+('6678835bb2d5cf7ef', 36, 'Mon_Jul_01_2024', 'Thu_Jul_01_2027', 3800000, 1537500, 35);
 
 -- --------------------------------------------------------
 
@@ -49,11 +94,7 @@ CREATE TABLE `personal_details_and_paymentinfo` (
 --
 
 INSERT INTO `personal_details_and_paymentinfo` (`id`, `title`, `firstname`, `lastname`, `mobile_number`, `home_address`, `car_name`, `car_type`, `car_year`, `car_power`, `car_transmission`, `price`, `payment`, `ammount_paid`) VALUES
-('REF17193545406036', 'Mr', 'Rea', 'Temi', 2147483647, 'crawford', '4Runner', 'Resourceful', '2022', 'Petrol', 'Automatic', '35500000', 'paid', ''),
-('REF17193547448831', 'Mr', 'Rea', 'Temi', 2147483647, 'crawford', '4Runner', 'Resourceful', '2022', 'Petrol', 'Automatic', '35500000', 'paid', ''),
-('REF17193549706811', 'Mr', 'Rea', 'Temi', 2147483647, 'crawford', '4Runner', 'Resourceful', '2022', 'Petrol', 'Automatic', '35500000', 'paid', ''),
-('REF17193551078020', 'Mr', 'Rea', 'Temi', 2147483647, 'crawford', 'Land Cruiser', 'Full-Size Luxury', '2023', 'Petrol', 'Manual', '55350000', 'paid', ''),
-('REF17196536835842', 'Mr', 'Rea', 'Temi', 2147483647, 'crawford', 'Land Cruiser', 'Full-Size Luxury', '2023', 'Petrol', 'Manual', '55350000', 'paid', '');
+('REF17198183925013', 'Mr', 'Ajogu', 'Joseph', 2147483647, 'crawford', 'Land Cruiser', 'Full-Size Luxury', '2023', 'Petrol', 'Manual', '55350000', '', '');
 
 -- --------------------------------------------------------
 
@@ -76,7 +117,8 @@ INSERT INTO `users` (`id`, `email`, `fullname`, `password`) VALUES
 ('66780c4f27c476c29', 'ikechukwungene11@gmail.com', 'ngene ikechukwu', '$2y$10$SrJysRwRRi3VC1IMLDh1g.wCcqjU7EYpQcJ8UlrtsOwnGXLSpmFn6'),
 ('667810dc30f887c9e', 'vickyajayi05@gmail.com', 'victor', '$2y$10$/YSL7u8ua0.StSY6YJWB0uro/RMNBoaRVp5yTgzAJvM3cwrq79xkG'),
 ('6678835bb2d5cf7ef', 'ajogujoseph0317@gmail.com', 'Ajogu Joseph', '$2y$10$8.ipXIsmSxRke45tKimhhORTglHu5i7pRxFRDsKRKK5QJ4GP9NGZ2'),
-('667aa85d617858814', 'obakpoloriwinosa@mail.com', 'Obakpolor Lord\'s-Doing', '$2y$10$4lnu9reb/XdPcFf3D0S7Yu8WBQOjoiKOu8Mm/UQ23topJ0H.GRrWS');
+('667aa85d617858814', 'obakpoloriwinosa@mail.com', 'Obakpolor Lord\'s-Doing', '$2y$10$4lnu9reb/XdPcFf3D0S7Yu8WBQOjoiKOu8Mm/UQ23topJ0H.GRrWS'),
+('6681ded522ab45e13', 'aj@mail.com', 'Joseph Ajogu', '$2y$10$4iWYYUxc6cjaIR/S7rFN0OGbBgtX7vfVdloNMa6UBYvEiIJy/Kq.y');
 
 -- --------------------------------------------------------
 

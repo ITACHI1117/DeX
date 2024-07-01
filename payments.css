@@ -93,7 +93,7 @@ nav .logo h1 {
   display: flex;
   gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
-  width: 100%;
+  width: 90%;
   padding-bottom: 40px;
   /* height: 200px; */
 }
@@ -116,17 +116,25 @@ table {
 }
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid #000000;
   text-align: left;
   padding: 10px;
 }
 table,
 th,
 td {
-  border: 1px solid white;
+  border: 1px solid rgb(255, 252, 252);
   border-collapse: collapse;
 }
 table th {
   background-color: #ebf5ff;
   color: #0074d9;
+}
+table tr {
+  background-color: #fdfcfc;
+  border: 1px solid #ebf5ff;
+  color: #000000;
+}
+table tr td {
+  border: 2px solid #ebf5ff;
 }
