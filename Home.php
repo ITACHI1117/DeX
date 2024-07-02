@@ -39,7 +39,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div>
           <ul class="links">
             <a href=""><li>Home</li></a>
-            <a href=""><li>Vehicles</li></a>
+            <a href=""><li style="color: #0074d9">Vehicles</li></a>
             <a href=""><li>How it Works</li></a>
             <a href=""><li>About</li></a>
             <a href=""><li>Contact</li></a>
@@ -48,18 +48,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       </div>
       <div class="buttons">
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        echo "<p>Welcome, " . htmlspecialchars($_SESSION["fullname"]) . "!</p>";
+        echo "<a href='dashboard.php' style='text-decoration: none; color:black; '><p>Welcome, " . htmlspecialchars($_SESSION["fullname"]) . "!</p>
+        </a>";
     }else{
       echo "<a href='./Login.html'
       ><button class='transparent_button'>Log in</button></a
     >
     <a href=''><button class='blue_buttom'>Sign up</button></a>";
     }   ?>
-      <!-- <p>Welcome <?php echo htmlspecialchars($_SESSION["fullname"]); ?></p>  -->
-        <!-- <a href="./Login.html"
-          ><button class="transparent_button">Log in</button></a
-        >
-        <a href=""><button class="blue_buttom">Sign up</button></a> -->
+     
       </div>
     </nav>
     <section>
@@ -84,7 +81,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               <span class='des_2'><p>".$row['transmission']." </p></span>
             </div>
             <div class='price_buy'>
-              <p>₦".$row['price']." </p>
+              <p>₦".number_format($row['price'])." </p>
              <a href='explore.php?selectedCar=".$row['id']."&userId=".$_SESSION["id"]."'><button class='exp_btn'>Explore</button></a> 
             </div>
           </div>

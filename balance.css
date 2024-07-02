@@ -52,6 +52,16 @@ nav .logo h1 {
 .nav_link_container p {
   padding-left: 10px;
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .nav_link_container p {
+    font-size: 10px;
+    padding-left: 5px;
+  }
+  nav .logo h1 {
+    font-size: 20px;
+  }
+}
+
 .side_line {
   width: 0.8px;
   background-color: #d9d9d9;
@@ -82,19 +92,35 @@ nav .logo h1 {
 
   /* padding-right: 30px; */
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .top_bar_item h2 {
+    font-size: 20px;
+  }
+  .top_bar_item p {
+    font-size: 12px;
+  }
+}
 .profile_container {
   display: flex;
   align-items: center;
 }
 
 .control_panel {
-  margin-left: 30px;
+  margin-left: 20px;
   margin-top: 20px;
   display: flex;
   gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
   width: 90%;
   padding-bottom: 40px;
+  overflow: hidden;
+  padding: 20px;
+  /* height: 200px; */
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .control_panel {
+    width: 85%;
+  }
 }
 
 .control_panel_item {
@@ -108,8 +134,8 @@ nav .logo h1 {
 /* tablet  */
 
 table {
-  margin-top: 20px;
-  margin-left: 20px;
+  /* margin-left: 20px;
+    margin-right: 20px; */
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* height: 100px; */
 }
@@ -128,6 +154,18 @@ td {
 table th {
   background-color: #ebf5ff;
   color: #0074d9;
+  font-size: 13px;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  table th {
+    background-color: #ebf5ff;
+    color: #0074d9;
+    font-size: 10px;
+  }
+  table tr td {
+    border: 2px solid #ebf5ff;
+    font-size: 10px;
+  }
 }
 table tr {
   background-color: #fdfcfc;
@@ -136,4 +174,11 @@ table tr {
 }
 table tr td {
   border: 2px solid #ebf5ff;
+  font-size: 13px;
+}
+.inbox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
